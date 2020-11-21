@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>No. of Investors: <strong>{{ no_of_investors }}</strong></p>
+    </div>
+    <div class="col">
+      <p>Total Investments: <strong>GHS {{ total_investments }}</strong></p>
+    </div>
+  </div>
+</div>
+
+<hr>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+              <th scope="col">#</th>
+              <th scope="col">Investor</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user, investments in users_and_investments.items %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}.</th>
+            <td>{{ user }}</td>
+            <td>-</td>
+            <td>{{ investments }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div>
+    <p> 
+        <a class="btn btn-outline-primary" href="/admin/">Go To Admin</i></a>
+    </p>
+</div>
+{% endblock %}

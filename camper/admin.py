@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import DifferentClasses, District, Camper
 
-# Register your models here.
+
+admin.site.register(DifferentClasses)
+admin.site.register(District)
+admin.site.register(Camper)
