@@ -19,7 +19,7 @@
          {{ user_form.password1|as_crispy_field }}
          {{ user_form.password2|as_crispy_field }}
 
-          <button style="background-color: yellow; color: blue" type="submit" class="btn">Register</button>
+          <button type="submit" class="btn btn-outline-primary">Login</button>
     </form>
     <p>Already have an account? <a href="{% url 'accounts:login' %}"><strong>login here</strong></a>!</p>
 </div>
