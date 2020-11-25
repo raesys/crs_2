@@ -11,5 +11,5 @@ urlpatterns = [
     path('new/', views.new_camper, name='new'),
     path('<int:id>/update/', views.update_camper, name='update'),
     path('<int:id>/delete/', views.delete_camper, name='delete'),
-    # path('dashboard/', views.dashboard, name='dashboard'),
+    path('dashboard/', views.dashboard, name='dashboard'),
 ]
