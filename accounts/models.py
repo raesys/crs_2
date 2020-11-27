@@ -17,7 +17,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=10)
     district = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
-    local_church = models.CharField(max_length=200)
+    local_church = models.CharField(max_length=200, help_text='The name of your assembly without "A/G" as suffix')
     balance = models.DecimalField(default=0, decimal_places=2, max_digits=100)
 
     class Meta:

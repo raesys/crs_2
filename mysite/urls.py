@@ -17,13 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 # To delete
-from django.shortcuts import render
-def index(request):
-    return render(request, 'index.html')
+from camper.views import home
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('mymin/', admin.site.urls),
     path('camper/', include('camper.urls')),
     path('accounts/', include('accounts.urls')),
-    path('', index),
+    path('', home),
 ]

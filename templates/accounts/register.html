@@ -3,23 +3,39 @@
 
 {% block content %}
 <div class="container">
+    <br>
     <form method="post" action="" autocomplete="on">
         {% csrf_token %}
-         {{ user_form.username|as_crispy_field }}
-         {{ profile_form.email|as_crispy_field }}
-         {{ profile_form.phone|as_crispy_field }}
+        <h5 class="text-center">Create Your Account</h5>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                {{ user_form.username|as_crispy_field }}
+            </div>
+            <div class="col-md-4">
+                {{ profile_form.email|as_crispy_field }}
+            </div>
+            <div class="col-md-4">
+                {{ profile_form.phone|as_crispy_field }}
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-4">
                 {{ profile_form.district|as_crispy_field }}
-                 </div>
-                <div class="col-md-8">
-                  {{ profile_form.local_church|as_crispy_field }}
-                </div>
+            </div>
+            <div class="col-md-8">
+                {{ profile_form.local_church|as_crispy_field }}
+            </div>
         </div>
-         {{ user_form.password1|as_crispy_field }}
-         {{ user_form.password2|as_crispy_field }}
-
-          <button type="submit" class="btn btn-outline-primary">Login</button>
+        <div class="row">
+            <div class="col-md-6">
+                {{ user_form.password1|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+                {{ user_form.password2|as_crispy_field }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
     </form>
     <p>Already have an account? <a href="{% url 'accounts:login' %}"><strong>login here</strong></a>!</p>
 </div>

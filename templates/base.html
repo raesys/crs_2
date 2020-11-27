@@ -16,11 +16,9 @@
       {% if user.is_authenticated %}
         {% include 'partials/_navbar.html' %}
       {% endif %}
-    <h2 class="text-center">
-      <br>
-      {% block page_title %} {% endblock %}
-    </h2>
+    
     <div class="container">
+      <br>
       {% include 'partials/messages.html' %}
 
       {% block content %}
@@ -46,10 +44,10 @@
       }
     }, 2000)
   </script> 
-  <script>
+<!--   <script>
     $(document).on('click', '.confirm-delete', function(){
         return confirm('Are you sure you want to delete this?');
     })
-  </script>
+  </script> -->
   </body>
 </html>

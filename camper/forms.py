@@ -11,3 +11,4 @@ class CamperForm(forms.ModelForm):
         self.fields['gender'].empty_label = 'Select'
         self.fields['different_class'].empty_label = 'Select'
         
+
