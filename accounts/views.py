@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate 
 from django.contrib import messages
-from .forms import ProfileForm
+from .forms import ProfileForm, SignUpForm
 from accounts.models import Profile
 
 
 def register(request):
     if request.method == 'POST':
-        user_form = UserCreationForm(data=request.POST)
+        user_form = SignUpForm(data=request.POST)
         profile_form = ProfileForm(data=request.POST)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
@@ -23,14 +23,14 @@ def register(request):
         else:
             messages.error(request, "Correct the errors below")
     else:
-        user_form = UserCreationForm()
+        user_form = SignUpForm()
         profile_form = ProfileForm()
 
     context = {
         'user_form': user_form,
         'profile_form': profile_form
     }
-    return render(request, 'accounts/register.html', context)
+    return render(request, 'accounts/register2.html', context)
 
 
 def login_request(request):
@@ -54,7 +54,7 @@ def login_request(request):
     context = {
         'form': form,
     }
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'accounts/login2.html', context)
 
 
 def logout_request(request):

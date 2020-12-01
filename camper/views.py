@@ -27,6 +27,33 @@ def camper_list(request):
 
 
 # Add new camper
+# @login_required(login_url='accounts:login')
+# def new_camper(request):
+#     # Checking users balance
+#     user_profile = request.user.profile
+#     if user_profile.balance < registration_fee:
+#         messages.info(request, f"Your current balance is GHS {user_profile.balance}, which is insufficient. Head over to your dashboard and top up!", extra_tags='alert-danger')
+#         return redirect('camper:list')
+#     if request.method == 'POST':
+#         form = CamperForm(data=request.POST)
+#         if form.is_valid():
+#             camper = form.save(commit=False)
+#             camper.created_by = request.user
+#             camper.save()
+#             user_profile.balance -= registration_fee
+#             user_profile.save()
+#             messages.success(request, f"{camper.first_name} {camper.last_name} has been successfully registered as a camper. Your balance is now GHS {user_profile.balance}.")
+#             return redirect('camper:list')
+
+#     form = CamperForm()
+
+#     context = {
+#         'form': form,
+#     }
+#     return render(request, 'camper/camper_form.html', context)
+
+
+# Add new camper
 @login_required(login_url='accounts:login')
 def new_camper(request):
     # Checking users balance
@@ -34,23 +61,24 @@ def new_camper(request):
     if user_profile.balance < registration_fee:
         messages.info(request, f"Your current balance is GHS {user_profile.balance}, which is insufficient. Head over to your dashboard and top up!", extra_tags='alert-danger')
         return redirect('camper:list')
+    camper = Camper(created_by=request.user)
     if request.method == 'POST':
-        form = CamperForm(data=request.POST)
+        form = CamperForm(data=request.POST, instance=camper)
         if form.is_valid():
-            camper = form.save(commit=False)
-            camper.created_by = request.user
-            camper.save()
+            form.save()
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
             user_profile.balance -= registration_fee
             user_profile.save()
-            messages.success(request, f"{camper.first_name} {camper.last_name} has been successfully registered as a camper. Your balance is now GHS {user_profile.balance}.")
+            messages.success(request, f"{first_name} {last_name} has been successfully registered as a camper. Your balance is now GHS {user_profile.balance}.")
             return redirect('camper:list')
+            
     form = CamperForm()
 
     context = {
         'form': form,
     }
     return render(request, 'camper/camper_form.html', context)
-
 
 # Update an existing camper details
 @login_required(login_url='accounts:login')

@@ -14,7 +14,6 @@ class District(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=10)
     district = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
     local_church = models.CharField(max_length=200, help_text='The name of your assembly without "A/G" as suffix')

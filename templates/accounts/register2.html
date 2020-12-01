@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<form class="mt-4 p-4" method="POST" action="" style="max-width: 500px;margin: auto;">
+    {% csrf_token %}
+    <div class="card mb-4">
+        <div class="card-header bg-info">
+            <h3 class="my-0 font-weight-normal text-light">Create your account</h3>
+        </div>
+        <div class="card-body">
+                {{ user_form|crispy }}
+                {{ profile_form|crispy }}
+                <button type="submit" class="btn btn-info btn-block" name="Create User">Create Account</button>
+                
+                <div class="form-group mt-4">
+                    <label>Already have an account?</label>
+                    <a class="text-info" href="{% url 'accounts:login' %}">Login.</a>
+                </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
