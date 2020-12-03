@@ -30,7 +30,7 @@ def register(request):
         'user_form': user_form,
         'profile_form': profile_form
     }
-    return render(request, 'accounts/register2.html', context)
+    return render(request, 'accounts/register.html', context)
 
 
 def login_request(request):
@@ -54,7 +54,7 @@ def login_request(request):
     context = {
         'form': form,
     }
-    return render(request, 'accounts/login2.html', context)
+    return render(request, 'accounts/login.html', context)
 
 
 def logout_request(request):
