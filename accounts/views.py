@@ -16,7 +16,7 @@ def register(request):
             user_profile = Profile(user=user)
             profile_form = ProfileForm(request.POST, instance=user_profile)
             profile_form.save()
-            messages.info(request, "Your account has been successfully created!")
+            messages.success(request, "Your account has been successfully created!")
             login(request, user)
             messages.info(request, f"You are now logged in as {username}.")
             return redirect('camper:list')
