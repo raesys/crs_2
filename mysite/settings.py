@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'camper',
     'accounts',
     'crispy_forms',
+    'feedback',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,7 @@ STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
+# MEDIA_URL = '/media/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

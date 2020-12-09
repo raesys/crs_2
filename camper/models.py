@@ -7,6 +7,7 @@ class DifferentClasses(models.Model):
 
     class Meta:
         verbose_name_plural = 'Different Classes'
+        ordering = ['name']
 
     def __str__(self):
         return self.name

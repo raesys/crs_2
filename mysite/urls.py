@@ -24,5 +24,6 @@ urlpatterns = [
     path('mymin/', admin.site.urls),
     path('camper/', include('camper.urls')),
     path('accounts/', include('accounts.urls')),
+    path('feedback/', include('feedback.urls')),
     path('', home),
 ]
